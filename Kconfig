@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: MIT
+
+config ZMK_DYNAMIC_ENCODER
+	bool
+	default y if DT_HAS_SEKIGON_DYNAMIC_ENCODER_SOURCE_ENABLED
+	default n
+	help
+	  Enable the runtime sensor binding provider dispatch hook.
+
+config ZMK_DYNAMIC_ENCODER_RUNTIME
+	bool "nemu-link per-layer encoder assignments"
+	depends on ZMK_STUDIO_RPC
+	depends on ZMK_DYNAMIC_SETTINGS
+	depends on ZMK_BEHAVIOR_LOCAL_IDS
+	depends on DT_HAS_SEKIGON_DYNAMIC_ENCODER_SOURCE_ENABLED
+	default y
+	select ZMK_DYNAMIC_ENCODER
+	help
+	  Enable runtime assignments for regular encoder sources edited from the Keymap view.
+	  High-resolution dial sources are provided by the high-resolution dial driver.

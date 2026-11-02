@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: MIT
+
+description: Runtime sensor binding source expanded across all keymap layers
+compatible: "sekigon,dynamic-encoder-source"
+properties:
+  source-name:
+    type: string
+    required: true
+  label:
+    type: string
+    required: true
+  sensor:
+    type: phandle
+    required: true
+  sensor-index:
+    type: int
+    required: true
+  input-mode:
+    type: string
+    required: true
+    enum: [tick, angle]
+  target-role:
+    type: string
+    required: true
+  default-cw-binding:
+    type: phandle-array
+    specifier-space: binding
+    description: Initial clockwise Behavior binding for runtime encoder sources.
+  default-ccw-binding:
+    type: phandle-array
+    specifier-space: binding
+    description: Initial counter-clockwise Behavior binding for runtime encoder sources.
